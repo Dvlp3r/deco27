@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <title>Deco27</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Deco27</title>
+  <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="author" content="HTMLCooker">
+
+  <!-- ================= Favicon ================== -->
+  <!-- Standard -->
+  <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+  <!-- Retina iPad Touch Icon-->
+  <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+  <!-- Retina iPhone Touch Icon-->
+  <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+  <!-- Standard iPad Touch Icon-->
+  <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+  <!-- Standard iPhone Touch Icon-->
+  <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+
+  <!-- ================= Google Fonts ================== -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet" type="text/css" />
+
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/bootstrap.min.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/stylesheet.css" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/boss_megamenu.css" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/jquery.jgrowl.css" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/boss_alphabet.css" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/responsive.css" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/boss_facecomments.css" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/loading.css" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/cs.animate.css" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/video.css" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/boss_filterproduct.css" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/isotope.css" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/bossblog.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/revolutionslider_settings.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/bootstrap-datetimepicker.min.css" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/jquery.fancybox.css" />
+  <link rel="stylesheet" type="text/css" href="<%= request.base_url %>/stylesheets/cloud-zoom.1.0.3.css" />
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<div id="bt_container" class="bt-wide">
+
+
+<%= render 'shares/header' %>
+
+<%= yield %>
+
+<%= render 'partials/footer' %>
+</div>
+</html>

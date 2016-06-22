@@ -1,0 +1,137 @@
+-if flash.present?
+  #notification
+    #notificationModal.modal.fade role= "dialog" tabindex= "-1"
+      .modal-dialog
+        .modal-content
+          .modal-body
+            - flash.each do |key, value|
+              .notification-content= value
+          .modal-footer
+            button.btn.btn-default data-dismiss= "modal" type= "button" Close
+
+#bt_loading
+  .bt-loading
+    #circularG
+      #circularG_1.circularG
+      #circularG_2.circularG
+      #circularG_3.circularG
+      #circularG_4.circularG
+      #circularG_5.circularG
+      #circularG_6.circularG
+      #circularG_7.circularG
+      #circularG_8.circularG
+#bt_header
+  nav#top
+    .container
+      .row
+        #right_top_links.nav.pull-right
+        	.bt-language
+	          a href= contact_path
+	            i.fa.fa-phone
+	            span 305-859-4848
+  .container
+    .row
+      .bt-content-menu style=("float: left; width: 100%; clear: both; height: 1px;")
+  a.open-bt-mobile
+    i.fa.fa-bars
+  .bt-mobile
+    .menu_mobile
+      a.close-panel
+        i.fa.fa-times-circle
+      a href= root_path
+        img.img-responsive alt="Deco27" src="#{ request.base_url }/images/DecoLOGO.svg" title= "Deco27"
+      .menubar
+        .container
+          .bt_mainmenu
+            .row
+              .nav-heading
+                a.open-panel
+                  b MENU
+                  span
+                    i.fa.fa-bars
+              nav.mega-menu
+                a.close-panel
+                  i.fa.fa-times-circle
+                ul.nav.nav-pills
+                  li
+                    a href=root_path
+                      span.menu-title Home
+                  li
+                    a href= gallery_path
+                      span.menu-title Inspiration
+                  li.parent
+                    p.plus.visible-xs +
+                    a href= categories_path
+                      span.menu-title Categories
+                      i.fa.fa-angle-down
+                    .dropdown.drop-grid-6-3
+                      .menu-row.row-col-3
+                        .menu-column.row-grid-1
+                          ul.column.category
+                            li.col-grid-1
+                              a href="#{ category_path('porcelains') }"  PORCELAINS
+                            li.col-grid-1
+                              a href="#{ category_path('doors') }"  DOORS
+                            li.col-grid-1
+                              a href="#{ category_path('walls') }"  WALLS
+                            li.col-grid-1
+                              a href="#{ category_path('hardwood-floors') }"  HARDWOOD FLOORS
+                  li
+                    a href= contact_path
+                      span.menu-title Contact Us
+  header
+    .container
+      .row
+        .col-sm-3
+          #logo
+            a href= root_path
+              img.img-responsive alt="Deco27" src="#{ request.base_url }/images/decoLOGO.svg" title= "Deco27"
+        / temporary disable searching
+        / #bt-search.input-group
+        /   a.icon_search href=""
+        /     i.fa.fa-search
+        /   .search-form
+        /     #search.input-group
+        /       input.form-control.input-lg name="search" placeholder="Search" type="text" value="" /
+        /       span.input-group-btn
+        /         button.btn.btn-default.btn-lg type="button"
+        /           i.fa.fa-search
+        .menubar
+          .container
+            .bt_mainmenu
+              .row
+                .nav-heading
+                  a.open-panel
+                    b MENU
+                    span
+                      i.fa.fa-bars
+                nav.mega-menu
+                  a.close-panel
+                    i.fa.fa-times-circle
+                  ul.nav.nav-pills
+                    li
+                      a href= root_path
+                        span.menu-title Home
+                    li
+                      a href= gallery_path
+                        span.menu-title Inspiration
+                    li.parent
+                      p.plus.visible-xs +
+                      a href= categories_path
+                        span.menu-title Categories
+                        i.fa.fa-angle-down
+                      .dropdown.drop-grid-6-1
+                        .menu-row.row-col-1
+                          .menu-column.row-grid-1
+                            ul.column.category
+                              li.col-grid-1
+                                a href="#{ category_path('porcelains') }"  PORCELAINS
+                              li.col-grid-1
+                                a href="#{ category_path('doors') }"  DOORS
+                              li.col-grid-1
+                                a href="#{ category_path('walls') }"  WALLS
+                              li.col-grid-1
+                                a href="#{ category_path('hardwood-floors') }"  HARDWOOD FLOORS
+                    li
+                      a href= contact_path
+                        span.menu-title Contact Us
