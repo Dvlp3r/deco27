@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   get 'admin/home', as: :admin
   get 'admin' => 'admin#home'
-
+  get 'sitemap.xml' => 'public/sitemap.xml'
   resources :categories do
     resources :products
   end
