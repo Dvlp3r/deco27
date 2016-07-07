@@ -40,7 +40,7 @@ gem 'slim'
 gem 'simple_form'
 gem 'kaminari'
 gem 'friendly_id', '~> 5.1.0'
-
+gem 'meta-tags'
 gem 'rails_12factor'
 # Use Unicorn as the app server
 # gem 'unicorn'
