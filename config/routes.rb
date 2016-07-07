@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/gallery" => "gallery#index"
   get "/contact" => "enquiries#new"
   get "/home.htm" => 'index#index'
+  get "/Home.htm" => 'index#index'
   # get "/porcelains" => "porcelains#index"
   # get "/walls" => "walls#index"
   # get "/doors" => "doors#index"
