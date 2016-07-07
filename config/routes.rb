@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :enquiries
   get "/gallery" => "gallery#index"
   get "/contact" => "enquiries#new"
-  get "/home.htm" => root 
+  get "/home.htm" => 'index#index'
   # get "/porcelains" => "porcelains#index"
   # get "/walls" => "walls#index"
   # get "/doors" => "doors#index"
