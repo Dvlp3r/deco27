@@ -14,6 +14,7 @@
           <div class="block-title">
             <h1>Luxury Designs</h1>
             <h4>with an Eye for Detail</h4>
+            <a href="#">Shop Now</a>
           </div>
         </div>
         <!-- /.bt-block-category -->
@@ -29,7 +30,7 @@
         <!-- /.product-filter -->
         <div class="row">
           <% @photos.each do |image| %>
-          <div class="product-layout product-list col-xs-3">
+          <div class="product-layout product-list col-xs-12">
             <div class="product-thumb">
               <div class="image">
                 <%= link_to image_tag(image.image.url(:large), :class => "img-responsive"), "#", data: {toggle: "modal", target: "##{image.product.blank? ? "_" : image.product.first.id}Modal", href: "##{image.product.first.id}Modal"} %>
@@ -210,9 +211,9 @@
             // What a shame bootstrap does not take into account dynamically loaded columns
             cols = $('#column-right, #column-left').length;
             if (cols == 2) {
-                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-6 col-md-6 col-sm-6 col-xs-12');
+                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-3 col-md-3 col-sm-3 col-xs-12');
             } else if (cols == 1) {
-                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-4 col-md-4 col-sm-4 col-xs-12');
+                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-3 col-md-3 col-sm-3 col-xs-12');
             } else {
                 $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-3 col-md-3 col-sm-3 col-xs-12');
             }
