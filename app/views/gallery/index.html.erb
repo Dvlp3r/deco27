@@ -2,7 +2,7 @@
   <br>
   <br>
 </div>
-<body>
+<body class="">
   <div class="container">
     <div class="row">
       <column id="column-left" class="col-sm-3 hidden-xs">
@@ -27,13 +27,7 @@
           </div>
           <!-- /.display -->
         </div>
-      </div>
-    </div>
-  </div>
         <!-- /.product-filter -->
-        <div class="fluid-container">
-
-
         <div class="row">
           <% @photos.each do |image| %>
           <div class="product-layout product-list">
@@ -109,13 +103,32 @@
           <% end %>
             <% end %>
           </div>
-        </div>
           <!-- /.product-layout -->
-
+        </div>
+        <!-- /.row -->
+        <!-- <div class="result-pagination">
+          <div class="results pull-left">Showing 1 to 15 of 19 (2 Pages)</div>
+          <div class="links">
+            <ul class="pagination">
+              <li class="active"><span>1</span>
+              </li>
+              <li><a href="page=2">2</a>
+              </li>
+              <li><a href="page=2">&gt;</a>
+              </li>
+              <li><a href="page=2">&gt;|</a>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+        <!-- /.result-pagination -->
+      </div>
       <!-- /#content -->
       <div id="tags-load"><i class="fa fa-spinner fa-pulse fa-2x"></i>
       </div>
+    </div>
     <!-- /.row -->
+  </div>
   <!-- /.container -->
   <div id="bt_footer">
   </div>
