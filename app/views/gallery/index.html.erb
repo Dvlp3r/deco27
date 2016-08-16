@@ -43,21 +43,21 @@
               <div class="image">
                 <%= link_to image_tag(image.image.url(:large), :class => "img-responsive"), "#", data: {toggle: "modal", target: "##{image.product.blank? ? "_" : image.product.first.id}Modal", href: "##{image.product.first.id}Modal"} %>
               </div>
-            </div>
-            <div class="caption">
-              <div class="name"><a href="#"><%= image.name %></a>
+              
+              <div class="caption">
+                <div class="name"><a href="#"><%= image.name %></a>
+                </div>
+                <div class="description">
+                  <p><%= image.product.blank? ? '' : image.product.first.description %></p>
+                </div>
               </div>
-              <div class="description">
-                <p><%= image.product.blank? ? '' : image.product.first.description %></p>
+              <div class="button-group button-list">
+                <button class="btn-cart" type="button"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                <button class="btn-wishlist" type="button" title="Add to Wish List"><i class="fa fa-heart"></i>
+                </button>
+                <button class="btn-compare" type="button" title="Compare this Product"><i class="fa fa-retweet"></i>
+                </button>
               </div>
-            </div>
-            <div class="button-group button-list">
-              <button class="btn-cart" type="button"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-              <button class="btn-wishlist" type="button" title="Add to Wish List"><i class="fa fa-heart"></i>
-              </button>
-              <button class="btn-compare" type="button" title="Compare this Product"><i class="fa fa-retweet"></i>
-              </button>
-            </div>
             </div>
           </div>
           <% if image.product.blank? %>
@@ -65,45 +65,45 @@
             <div id="<%=image.product.first.id%>Modal" class="modal fade" role="dialog" >
               <div style="width: 95%; max-width: 900px;" class="modal-dialog">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" title="Close" data-dismiss="modal" aria-hidden="true">×</button>
-                  </div>
-                    <div class="modal-body">
-                      <div id="modal-content">
-                        <div class="product-info-qs product-info">
-                          <div class="row">
-                              <div class="col-md-6 col-xs-12">
-                                <div class="bt-product-zoom">
-                                  <div class="image">
-                                    <%= image_tag(image.image.url(:large), :class => "img-responsive") %>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-md-6 col-xs-12">
-                                <div class="product-name">
-                                  <h1><%= image.name %></h1>
-                                </div>
-                                <div class="description">Product Description</div>
-                                <div class="button-group">
-                                  <%=button_to "View #{image.product.first.name}", category_product_path(image.product.first.category.slug, image.product.first.slug), method: :get %>
-                                </div>
-                              </div>
-                              <div class="col-xs-12">
-                                <div class="image-additional">
-                                  <ul id="boss_image_additional">
-                                    <% image.product.first.product_images.each do |product_image| %>
-                                    <li>
-                                      <a href="<%= product_image.image.url(:thumb)%>" title="<%= product_image.name %>" class="cloud-zoom-gallery"><img src="<%= product_image.image.url(:thumb)%>" title="<%= product_image.name %>" alt="<%= product_image.name %>">
-                                      </a>
-                                    </li>
-                                    <% end %>
-                                  </ul>
-                                </div>
-                              </div>
+                <div class="modal-header">
+                  <button type="button" class="close" title="Close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                  <div id="modal-content">
+                    <div class="product-info-qs product-info">
+                      <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                          <div class="bt-product-zoom">
+                            <div class="image">
+                              <%= image_tag(image.image.url(:large), :class => "img-responsive") %>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <div class="product-name">
+                            <h1><%= image.name %></h1>
+                          </div>
+                          <div class="description">Product Description</div>
+                          <div class="button-group">
+                            <%=button_to "View #{image.product.first.name}", category_product_path(image.product.first.category.slug, image.product.first.slug), method: :get %>
+                          </div>
+                        </div>
+                        <div class="col-xs-12">
+                          <div class="image-additional">
+                            <ul id="boss_image_additional">
+                              <% image.product.first.product_images.each do |product_image| %>
+                              <li>
+                                <a href="<%= product_image.image.url(:thumb)%>" title="<%= product_image.name %>" class="cloud-zoom-gallery"><img src="<%= product_image.image.url(:thumb)%>" title="<%= product_image.name %>" alt="<%= product_image.name %>">
+                                </a>
+                              </li>
+                              <% end %>
+                            </ul>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
