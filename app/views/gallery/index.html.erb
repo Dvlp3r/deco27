@@ -12,11 +12,8 @@
   <br>
   <br>
 </div>
-
   <div class="fluid-container">
     <div class="row">
-
-      <!-- /#column-left -->
       <div id="content" class="col-sm-12">
         <div data-delay="200" data-animate="fadeInDown" class="bt-block-category fadeInDown animated">
           <a href="#"> <img alt="banner" src="../images/banner/EcoDomo.jpg"></a>
@@ -26,6 +23,7 @@
             <a style="float:right" href="#">Shop Now</a>
           </div>
         </div>
+      </div>
         <!-- /.bt-block-category -->
         <div class="product-filter">
           <div class="display hidden-xs">
@@ -39,8 +37,8 @@
         <!-- /.product-filter -->
         <div class="row">
           <div class="product-layout product-list">
+            <% @photos.each do |image| %>
             <div class="product-thumb">
-                <% @photos.each do |image| %>
                 <div class="image">
                   <%= link_to image_tag(image.image.url(:large), :class => "img-responsive"), "#", data: {toggle: "modal", target: "##{image.product.blank? ? "_" : image.product.first.id}Modal", href: "##{image.product.first.id}Modal"} %>
                 </div>
