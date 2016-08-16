@@ -24,7 +24,9 @@
           </div>
         </div>
       </div>
+    </div>
         <!-- /.bt-block-category -->
+
         <div class="product-filter">
           <div class="display hidden-xs">
             <button type="button" id="list-view" class="btn-list" data-toggle="tooltip" title="List"><i class="fa fa-th-list"></i>
@@ -35,50 +37,42 @@
           <!-- /.display -->
         </div>
         <!-- /.product-filter -->
+
         <div class="row">
           <div class="product-layout product-list">
             <% @photos.each do |image| %>
             <div class="product-thumb">
-                <div class="image">
-                  <%= link_to image_tag(image.image.url(:large), :class => "img-responsive"), "#", data: {toggle: "modal", target: "##{image.product.blank? ? "_" : image.product.first.id}Modal", href: "##{image.product.first.id}Modal"} %>
+              <div class="image">
+                <%= link_to image_tag(image.image.url(:large), :class => "img-responsive"), "#", data: {toggle: "modal", target: "##{image.product.blank? ? "_" : image.product.first.id}Modal", href: "##{image.product.first.id}Modal"} %>
+              </div>
+              <div class="caption">
+                <div class="name"><a href="#"><%= image.name %></a>
                 </div>
-                <div class="caption">
-                  <div class="name"><a href="#"><%= image.name %></a>
-                  </div>
-                  <div class="description">
-                    <p><%= image.product.blank? ? '' : image.product.first.description %></p>
-                  </div>
+                <div class="description">
+                  <p><%= image.product.blank? ? '' : image.product.first.description %></p>
                 </div>
-                <div class="button-group button-list">
-                  <button class="btn-cart" type="button"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                  <button class="btn-wishlist" type="button" title="Add to Wish List"><i class="fa fa-heart"></i>
-                  </button>
-                  <button class="btn-compare" type="button" title="Compare this Product"><i class="fa fa-retweet"></i>
-                  </button>
-                </div>
-
+              </div>
+              <div class="button-group button-list">
+                <button class="btn-cart" type="button"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                <button class="btn-wishlist" type="button" title="Add to Wish List"><i class="fa fa-heart"></i>
+                </button>
+                <button class="btn-compare" type="button" title="Compare this Product"><i class="fa fa-retweet"></i>
+                </button>
+              </div>
             </div>
             <% end %>
           </div>
-
-
-
-
-
-          </div>
-          </div>
-          <!-- /.product-layout -->
         </div>
-        <!-- /.row -->
-
       </div>
-      <!-- /#content -->
+
+
+
       <div id="tags-load"><i class="fa fa-spinner fa-pulse fa-2x"></i>
       </div>
     </div>
-    <!-- /.row -->
 
-  <!-- /.container -->
+
+
 
   <div id="back_top" class="back_top" title="Back To Top"><span><i class="fa fa-angle-up"></i></span></div>
 
