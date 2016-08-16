@@ -1812,7 +1812,6 @@ h1 + .product-filter{
 	-moz-transition:all 0.8s ease 0s;
 }
 .product-grid{
-	float:none;
 	display:inline-block;
 	margin-right:-4px;
 	vertical-align:top;
