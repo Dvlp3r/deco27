@@ -43,7 +43,7 @@
 
                     <div class="row">
                         <% @photos.each do |image| %>
-                        <div class="product-layout product-list col-xs-12">
+                        <div class="product-layout product-list col-xs-3">
                             <div class="product-thumb">
                                 <div class="image">
                                   <%= link_to image_tag(image.image.url(:large), :class => "img-responsive"), "#", data: {toggle: "modal", target: "##{image.product.blank? ? "_" : image.product.first.id}Modal", href: "##{image.product.first.id}Modal"} %>
