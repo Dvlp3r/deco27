@@ -96,7 +96,7 @@
                             <ul id="boss_image_additional">
                               <% image.product.first.product_images.each do |product_image| %>
                               <li>
-                                <a href="<%= product_image.image.url(:thumb)%>" title="<%= product_image.name %>" class="cloud-zoom-gallery" rel="'<%= product_image.image.url(:thumb)%>'"><img src="<%= product_image.image.url(:thumb)%>" title="<%= product_image.name %>" alt="<%= product_image.name %>">
+                                <a href="<%= product_image.image.url(:thumb)%>" title="<%= product_image.name %>" class="cloud-zoom-gallery"><img src="<%= product_image.image.url(:thumb)%>" title="<%= product_image.name %>" alt="<%= product_image.name %>">
                                 </a>
                               </li>
                               <% end %>
