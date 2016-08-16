@@ -61,7 +61,6 @@
             </div>
           </div>
           <% if image.product.blank? %>
-          <% end %>
           <% else %>
             <div id="<%=image.product.first.id%>Modal" class="modal fade" role="dialog" >
               <div style="width: 95%; max-width: 900px;" class="modal-dialog">
@@ -108,6 +107,7 @@
               </div>
             </div>
           </div>
+          <% end %>
             <% end %>
           </div>
           <!-- /.product-layout -->
@@ -124,47 +124,7 @@
   <!-- /.container -->
 
   <div id="back_top" class="back_top" title="Back To Top"><span><i class="fa fa-angle-up"></i></span></div>
-  <div aria-hidden="true" role="dialog" tabindex="-1" class="modal fade" id="myModal">
-    <div style="width: 95%; max-width: 900px;" class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" title="Close" data-dismiss="modal" aria-hidden="true">×</button>
-        </div>
-        <div class="modal-body">
-          <div id="modal-content">
-            <div class="product-info-qs product-info">
-              <div class="row">
-                <div class="col-md-6 col-xs-12">
-                  <div class="bt-product-zoom">
-                    <div class="image">
-
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-xs-12">
-                  <div class="product-name">
-                  </div>
-                  <div class="description">Product Description</div>
-                  <div class="button-group">
-                  </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="image-additional">
-                    <ul id="boss_image_additional">
-                      <li>
-
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /#myModal -->
+  
 
   <script src="../javascripts/jquery-2.1.1.min.js"></script>
   <script src="../javascripts/bootstrap.min.js"></script>
