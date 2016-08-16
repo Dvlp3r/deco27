@@ -43,17 +43,10 @@
 
                     <div class="row">
                         <% @photos.each do |image| %>
-                        <div class="product-layout product-list col-xs-4">
+                        <div class="col-sm-3">
                             <div class="product-thumb">
                                 <div class="image">
                                   <%= link_to image_tag(image.image.url(:large), :class => "img-responsive"), "#", data: {toggle: "modal", target: "##{image.product.blank? ? "_" : image.product.first.id}Modal", href: "##{image.product.first.id}Modal"} %>
-                                    <div class="button-group button-grid">
-                                        <button class="btn-cart" type="button"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                                        <button class="btn-wishlist" type="button" title="Add to Wish List"><i class="fa fa-heart"></i>
-                                        </button>
-                                        <button class="btn-compare" type="button" title="Compare this Product"><i class="fa fa-retweet"></i>
-                                        </button>
-                                    </div>
                                 </div>
                                 <div class="caption">
                                     <div class="name"><a href="product-detail.html">Cashmere cuff vintage Levi maxi</a>
@@ -67,13 +60,6 @@
                                     <div class="description">
                                         <p><%= image.product.blank? ? '' : image.product.first.description %></p>
                                     </div>
-                                </div>
-                                <div class="button-group button-list">
-                                    <button class="btn-cart" type="button"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                                    <button class="btn-wishlist" type="button" title="Add to Wish List"><i class="fa fa-heart"></i>
-                                    </button>
-                                    <button class="btn-compare" type="button" title="Compare this Product"><i class="fa fa-retweet"></i>
-                                    </button>
                                 </div>
                             </div>
                         </div><!-- /.product-layout -->
