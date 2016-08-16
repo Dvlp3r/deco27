@@ -38,9 +38,9 @@
         </div>
         <!-- /.product-filter -->
         <div class="row">
-          <% @photos.each do |image| %>
           <div class="product-layout product-list">
             <div class="product-thumb">
+              <% @photos.each do |image| %>
               <div class="image">
                 <%= link_to image_tag(image.image.url(:large), :class => "img-responsive"), "#", data: {toggle: "modal", target: "##{image.product.blank? ? "_" : image.product.first.id}Modal", href: "##{image.product.first.id}Modal"} %>
               </div>
@@ -61,6 +61,7 @@
             </div>
           </div>
           <% if image.product.blank? %>
+          <% end %>
           <% else %>
             <div id="<%=image.product.first.id%>Modal" class="modal fade" role="dialog" >
               <div style="width: 95%; max-width: 900px;" class="modal-dialog">
@@ -107,13 +108,12 @@
               </div>
             </div>
           </div>
-          <% end %>
             <% end %>
           </div>
           <!-- /.product-layout -->
         </div>
         <!-- /.row -->
-        
+
       </div>
       <!-- /#content -->
       <div id="tags-load"><i class="fa fa-spinner fa-pulse fa-2x"></i>
