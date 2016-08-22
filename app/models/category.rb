@@ -1,8 +1,11 @@
 class Category < ActiveRecord::Base
 	extend FriendlyId
-  has_many :products, dependent: :destroy
+  has_many :product_categories
+  has_many :products, through: :product_categories, dependent: :destroy
   friendly_id :name, use: :slugged
   validates_presence_of :name
+
+  has_ancestry
 
   DEFAULT_URL = '/images/missing-categories.jpg'
   VALIDATE_SIZE = { :in => 0..5.megabytes, :message => 'Photo size too large. Please limit to 5 mb.' }
@@ -22,4 +25,7 @@ class Category < ActiveRecord::Base
     {:bucket => ENV['s3_bucket'], :access_key_id => ENV['aws_access_key_id'], :secret_access_key => ENV['aws_access_secret']}
   end
 
+    def parent_enum
+    Category.where.not(id: id).map { |c| [ c.name, c.id ] }
+  end
 end

@@ -38,4 +38,38 @@ RailsAdmin.config do |config|
     # history_show
   end
 
+  # config.model 'Category' do
+  #   list do
+  #     field :name
+  #     field :created_at
+  #   end
+  # end
+
+  config.model Category do
+    edit do
+      field :name
+      field :picture
+      field :slug
+      field :parent_id, :enum do
+        enum_method do
+          :parent_enum
+        end
+      end
+      field :products
+    end
+  end
+
+  config.model Product do
+    edit do
+      field :name
+      field :description
+      field :slug
+      field :is_feature
+      field :brand
+      field :gallery_id
+      field :gallery_image
+      field :categories
+      field :product_images
+    end
+  end
 end
