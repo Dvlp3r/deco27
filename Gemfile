@@ -67,4 +67,5 @@ group :development do
 
   gem 'awesome_print'
   gem 'dotenv-rails'
+  gem "letter_opener"
 end

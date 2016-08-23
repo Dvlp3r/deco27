@@ -15,7 +15,7 @@
                   ul.item_child
                     - cat.children.each do |child|
                       li
-                        - href = child.has_children? ? '#' : category_path(cat)
+                        - href = child.has_children? ? '#' : category_path(child)
                         a.list-group-item href="#{href}" = child.name
     #content.col-sm-9
       .bt-block-category.fadeInDown.animated data-animate="fadeInDown" data-delay="200" 
