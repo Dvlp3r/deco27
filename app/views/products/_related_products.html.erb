@@ -3,7 +3,7 @@
     <% @related_products.each do |product| %>
     <div class="product-thumb">
       <div class="image">
-        <%= link_to(image_tag(product.product_images.first.image.url(:thumb), :class => "img-responsive"),category_product_path(product.category.slug, product.slug))%>
+        <%= link_to(image_tag(product.product_images.first.image.url(:thumb), :class => "img-responsive"),category_path(@category))%>
       </div>
     </div>
     <% end %>

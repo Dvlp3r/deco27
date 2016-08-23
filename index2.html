@@ -30,7 +30,8 @@
                 </a>
                 </div>
                 <% if admin_signed_in? %>
-                  <%= link_to 'Show', [product.category, product], class: "btn btn-primary" %>&nbsp;
+                  <!-- add_fix_for_category -->
+                  <%= # link_to 'Show', [product.category, product], class: "btn btn-primary" %>&nbsp;
                   <%= link_to 'Edit', edit_category_product_path(product.category, product), class: "btn btn-basecamp" %>&nbsp;
                   <%= link_to 'Destroy', [product.category, product], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
                 <% end %>
