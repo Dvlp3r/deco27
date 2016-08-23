@@ -76,6 +76,8 @@
                               a href="#{ category_path('walls') }"  WALLS
                             li.col-grid-1
                               a href="#{ category_path('hardwood-floors') }"  HARDWOOD FLOORS
+                            li.col-grid-1
+                              a href="#{ category_path('bathroom') }"  BATHROOM
                   li
                     a href="#"
                       span.menu-title Art Gallery
@@ -131,14 +133,9 @@
                         .menu-row.row-col-1
                           .menu-column.row-grid-1
                             ul.column.category
-                              li.col-grid-1
-                                a href="#{ category_path('porcelains') }"  PORCELAINS
-                              li.col-grid-1
-                                a href="#{ category_path('doors') }"  DOORS
-                              li.col-grid-1
-                                a href="#{ category_path('walls') }"  WALLS
-                              li.col-grid-1
-                                a href="#{ category_path('hardwood-floors') }"  HARDWOOD FLOORS
+                              - Category.roots.each do |root|
+                                li.col-grid-1
+                                  a href="#{ category_path(root.slug) }"  = root.name.upcase
                     li
                       a target="_blank" href="http://www.blixpics.com/"
                         span.menu-title Art Gallery

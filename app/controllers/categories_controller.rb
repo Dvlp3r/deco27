@@ -11,6 +11,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @parent_category = Category.roots.friendly.find(@category.root.slug)
     @products = @category.products.page params[:page]
   end
 

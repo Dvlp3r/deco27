@@ -7,8 +7,99 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Admin.create email: 'patrick@dvlper.com', password: '1234567890'
 
-Category.create(name: "Porcelains")
-Category.create(name: "Doors")
-Category.create(name: "Walls")
-Category.create(name: "Hardwood Floors")
-Category.create(name: "Stairs")
+# # porc = Category.where(name: "Porcelains").first_or_create
+
+# # porc_subcategories = %w{Floors Living Dining Kitchen Walls Bathroom Patio}
+
+# categories = {}
+
+# categories["Porcelains"] = ["Floors", "Living", "Dining", "Kitchen", "Walls", "Bathroom", "Patio",]
+
+# categories["Walls"] = ["Wood", "Porcelain", "Leather", "Extravaganza",]
+
+# categories["Doors"] = ["Modern", "Transitional", "Eco", "Viva", "Spazioquadro", "Krona Frameless"]
+#   categories["Modern"] = ["Wenge", "Matte White", "Gray", "Light Oak", "Mahogany"]
+#   categories["Transitional"] = ["Wenge", "Matte White", "Gray", "Light Oak", "Mahogany"]
+#   categories["Eco"] = ["Eco Wenge", "Eco White", "Eco Gray", "Eco Light Oak"]
+#   categories["Viva"] = ["Rain of Hearts", "Fireworks", "Spring", "Streamers", "Spots", "Star", "Glass", "Two-Faced"]
+#   categories["Spazioquadro"] = ["Sensazioni"]
+#   categories["Krona Frameless"] = ["Swing Doors", "Sliding Systems"]
+
+# categories["Bathroom"] = ["Catalog", "Water Sensations", "Bathroom Accessories", "Faucet Collection", "Bathtub Collection", "Furniture", "Sinks", "Plumbing Accessories", "Toilet Collection"]
+#   categories["Water Sensations"] = ["Square Shower Heads", "Rectangle Shower Heads", "Round Shower Heads", "Shower Controls", "Accessories"]
+#   categories["Bathroom Accessories"] = ["Air", "Curve", "Form", "Tube", "Una"]
+#   categories["Faucet Collection"] = ["Curve", "Form", "Spin", "Tube", "Una", "Wave"]
+#   categories["Bathtub Collection"] = ["ACM", "Acrylic"]
+#   categories["Sinks"] = ["Undermount", "ACM", "Ceramic"]
+#   categories["Plumbing Accessories"] = ["Drains", "Bottle Trap", "Angle Valves", "Water Outlet", "Pop Ups", "Shower Arms/Sliding Bar", "Hose"]
+#   categories["Toilet Collection"] = ["Wall Hung", "One Piece"]
+
+# categories["Hardwood Floors"] = ["The Atelier Collection", "The Chateau Collection", "The Heritage Collection", "The Riverstone Collection",
+#                                  "The Strata Collection", "The Terra Collection", "The Vintage Remains Collection", "The New Classics Collection",
+#                                  "The Palais Collection", "The Italian Collection"]
+#   categories["The Italian Collection"] = ["Contermporary/Modern", "Casual/Country/Tropical", "Eclectic", "Commercial"]                               
+
+# categories["Recycled Leather Floors"] = []
+# # Category.find_or_create_by(name: "Doors")
+
+
+
+
+# categories.each do |k, v|
+#   parent = Category.where(name: k).first_or_create
+#   v.each do |child|
+#     parent.children.where(name: child).first_or_create
+#   end
+# end
+
+# Category.find_or_create_by(name: "Walls")
+
+# Category.find_or_create_by(name: "Hardwood Floors")
+
+# Category.find_or_create_by(name: "Stairs")
+
+categories = {}
+categories["Porcelains"] = ["Floors", "Living", "Dining", "Kitchen", "Walls", "Bathroom", "Patio",]
+
+categories["Walls"] = ["Wood", "Porcelain", "Leather", "Extravaganza",]
+
+categories["Doors"] = ["Modern" => ["Wenge", "Matte White", "Gray", "Light Oak", "Mahogany"],
+                      "Transitional" => ["Wenge", "Matte White", "Gray", "Light Oak", "Mahogany"],
+                      "Eco" => ["Eco Wenge", "Eco White", "Eco Gray", "Eco Light Oak"],
+                      "Viva" => ["Rain of Hearts", "Fireworks", "Spring", "Streamers", "Spots", "Star", "Glass", "Two-Faced"],
+                      "Spazioquadro" => ["Sensazioni"],
+                      "Krona Frameless" => ["Swing Doors", "Sliding Systems"]]
+
+categories["Bathroom"] = ["Catalog", "Furniture",
+                          "Water Sensations" => ["Square Shower Heads", "Rectangle Shower Heads", "Round Shower Heads", "Shower Controls", "Accessories"],
+                          "Bathroom Accessories" => ["Air", "Curve", "Form", "Tube", "Una"],
+                          "Faucet Collection" => ["Curve", "Form", "Spin", "Tube", "Una", "Wave"],
+                          "Bathtub Collection" => ["ACM", "Acrylic"],
+                          "Sinks" => ["Undermount", "ACM", "Ceramic"],
+                          "Plumbing Accessories" => ["Drains", "Bottle Trap", "Angle Valves", "Water Outlet", "Pop Ups", "Shower Arms/Sliding Bar", "Hose"],
+                          "Toilet Collection" => ["Wall Hung", "One Piece"]
+                          ]
+
+categories["Hardwood Floors"] = ["The Atelier Collection", "The Chateau Collection", "The Heritage Collection", "The Riverstone Collection",
+                                 "The Strata Collection", "The Terra Collection", "The Vintage Remains Collection", "The New Classics Collection",
+                                 "The Palais Collection",
+                                 "The Italian Collection" => ["Contermporary/Modern", "Casual/Country/Tropical", "Eclectic", "Commercial"]
+                                ]                              
+
+categories["Recycled Leather Floors"] = []
+
+categories.each do |k, v|
+  parent = Category.roots.where(name: k).first_or_create
+  v.each do |value|
+    if value.is_a? String
+      parent.children.where(name: value).first_or_create
+    elsif value.is_a? Hash
+      value.each do |kk, vv|
+        p = parent.children.where(name: kk).first_or_create
+        vv.each do |vvv|
+          p.children.where(name: vvv).first_or_create
+        end
+      end
+    end
+  end
+end

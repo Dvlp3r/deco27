@@ -8,28 +8,15 @@
         .box-content
           #boss-category.box-category
             ul.box-category
-              li.child.active
-                a.list-group-item.active href="#" 
-                ul.item_child
-                  li
-                    a.list-group-item href="#"  Category
-                  li
-                    a.list-group-item href="#"  Subcategory
-                  li
-                    a.list-group-item href="#"  Subcategory
-                  li
-                    a.list-group-item href="#"  Subcategory
-                  li
-                    a.list-group-item href="#"  Subcategory
-              li
-                a.list-group-item href="#" 
-                | Category
-              li
-                a.list-group-item href="#" 
-                | Category
-              li
-                a.list-group-item href="#" 
-                | Category
+              - @parent_category.children.each do |cat|
+                li.child.active
+                  - href = cat.has_children? ? '#' : category_path(cat)
+                  a.list-group-item.active href="#{href}" = cat.name
+                  ul.item_child
+                    - cat.children.each do |child|
+                      li
+                        - href = child.has_children? ? '#' : category_path(cat)
+                        a.list-group-item href="#{href}" = child.name
     #content.col-sm-9
       .bt-block-category.fadeInDown.animated data-animate="fadeInDown" data-delay="200" 
         a href="#" 
