@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
   has_many :product_images
   accepts_nested_attributes_for :product_images, allow_destroy: true
   scope :featured, -> { where(is_feature: true)}
-
+  scope :of_children_categories, ->(ids){ joins(:categories).where(categories: {id: ids}) }
 
   friendly_id :name, use: :slugged
   validates_presence_of :name
