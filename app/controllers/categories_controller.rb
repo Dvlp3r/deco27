@@ -4,14 +4,15 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
-    @products = Product.all#.reject{ |category| category.try(:products).blank? }.sample.try(:products)
+    @categories = Category.roots
+    # @products = Product.all#.reject{ |category| category.try(:products).blank? }.sample.try(:products)
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @products = @category.products.page params[:page]
+    @parent_category = Category.roots.friendly.find(@category.root.slug)
+    @products = Product.of_children_categories(@category.descendant_ids << @category.id).page params[:page]
   end
 
   # GET /categories/new
