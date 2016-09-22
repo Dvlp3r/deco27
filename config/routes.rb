@@ -22,6 +22,13 @@ Rails.application.routes.draw do
   get 'admin' => 'admin#home'
   get 'sitemap.xml', :to => redirect('/sitemap.xml')
   resources :categories do
+    #TODO investigate product`t actions
     resources :products
+  end
+
+  resources :products, only: [] do
+    collection do
+      get 'results'
+    end
   end
 end

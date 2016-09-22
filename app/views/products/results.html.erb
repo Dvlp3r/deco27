@@ -1,0 +1,150 @@
+<body class="">
+  <div class="container">
+    <div class="row">
+      <column id="column-left" class="col-sm-3 hidden-xs"></column><!-- /#column-left -->
+      <div id="content" class="col-sm-12">
+        <div class="text-center">
+          <!-- Mobile view -->
+          <h1>Search Result</h1>
+          <div class="row">
+            <%= render partial: 'products/product_card', :collection => @products, :as => :product %>
+            <%= paginate @products %>
+          </div>  
+
+
+          <div class="face-comment tab-pane" id="tab_facecomments">
+            <div class="bt-facecomments">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="fb-comments" data-href="" data-colorscheme="light" data-numposts="5" data-order-by="reverse_time"></div>
+                </div>
+              </div>
+              <div id="fb-root"></div>
+            </div>
+          </div><!-- /.tab-pane -->
+        </div><!-- /.tab-content -->
+      </div><!-- /#content -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+
+
+  <div id="back_top" class="back_top" title="Back To Top"><span><i class="fa fa-angle-up"></i></span></div>
+
+  <script src="<%= request.base_url %>/javascripts/jquery-2.1.1.min.js"></script>
+  <script src="<%= request.base_url %>/javascripts/bootstrap.min.js"></script>
+  <script src="<%= request.base_url %>/javascripts/getwidthbrowser.js"></script>
+  <script src="<%= request.base_url %>/javascripts/cs.bossthemes.js"></script>
+  <script src="<%= request.base_url %>/javascripts/jquery.jgrowl.js"></script>
+  <script src="<%= request.base_url %>/javascripts/jquery.appear.js"></script>
+  <script src="<%= request.base_url %>/javascripts/video.js"></script>
+  <script src="<%= request.base_url %>/javascripts/jquery.smoothscroll.js"></script>
+  <script src="<%= request.base_url %>/javascripts/carouFredSel-6.2.1.js"></script>
+  <script src="<%= request.base_url %>/javascripts/isotope.pkgd.js"></script>
+  <script src="<%= request.base_url %>/javascripts/plugins.js"></script>
+  <script src="<%= request.base_url %>/javascripts/jquery.tools.min.js"></script>
+  <script src="<%= request.base_url %>/javascripts/jquery.revolution.min.js"></script>
+  <script src="<%= request.base_url %>/javascripts/cloud-zoom.1.0.3.js"></script>
+  <script src="<%= request.base_url %>/javascripts/custom.js"></script>
+  <script src="<%= request.base_url %>/javascripts/jquery.fancybox.js"></script>
+  <script>
+    jQuery(document).ready(function() {
+      /* bosszoomtoolbox */
+      $.fn.CloudZoom.defaults = {
+        adjustX: 0,
+        adjustY: 0,
+        tint: '#FFF',
+        tintOpacity: 0.5,
+        softFocus: 0,
+        lensOpacity: 0.7,
+        zoomWidth: '450',
+        zoomHeight: '512',
+        position: 'inside',
+        showTitle: 0,
+        titleOpacity: 0.5,
+        smoothMove: '3'
+      };
+      $('.cloud-zoom, .cloud-zoom-gallery').CloudZoom();
+
+              //pass the images to Fancybox
+              var gallerylist = [];
+              gallerylist.push({
+                href: "/images/product/p21-600x683.jpg",
+                title: "Cashmere cuff vintage Levi maxi"
+              });
+              gallerylist.push({
+                href: "/images/product/p18-600x683.jpg",
+                title: "Cashmere cuff vintage Levi maxi"
+              });
+              gallerylist.push({
+                href: "/images/product/p1-600x683.jpg",
+                title: "Cashmere cuff vintage Levi maxi"
+              });
+              gallerylist.push({
+                href: "/images/product/p16-600x683.jpg",
+                title: "Cashmere cuff vintage Levi maxi"
+              });
+              gallerylist.push({
+                href: "/images/product/p11-600x683.jpg",
+                title: "Cashmere cuff vintage Levi maxi"
+              });
+              gallerylist.push({
+                href: "/images/product/p10-600x683.jpg",
+                title: "Cashmere cuff vintage Levi maxi"
+              });
+              $("#wrap").bind('click', function() {
+                $.fancybox.open(gallerylist);
+                return false;
+              });
+
+              $("#boss-image-additional li a").on('click',function() {
+                $("#boss_large").attr("href", this)
+              });
+
+              /* Color Option */
+              $('.bt-image-option').on('click',function() {
+                $('.bt-image-option').each(function() {
+                  $(this).removeClass('active');
+                });
+                $(this).addClass('active');
+              });
+
+              /* boss-image-additional slider */
+              $('#boss-image-additional').carouFredSel({
+                auto: false,
+                responsive: true,
+                width: '100%',
+                prev: '#prev_image_additional',
+                next: '#next_image_additional',
+                swipe: {
+                  onTouch: true
+                },
+                items: {
+                  width: 120,
+                  height: 'auto',
+                  visible: {
+                    min: 1,
+                    max: 3
+                  }
+                },
+                scroll: {
+                      direction: 'left', //  The direction of the transition.
+                      duration: 500, //  The duration of the transition.
+                    }
+                  });
+
+            });
+
+    function changeQty(increase) {
+      var qty = parseInt($('.select_number').find("input").val());
+      if (!isNaN(qty)) {
+        qty = increase ? qty + 1 : (qty > 1 ? qty - 1 : 1);
+        $('.select_number').find("input").val(qty);
+      } else {
+        $('.select_number').find("input").val(1);
+      }
+    }
+    function goToByScroll(id){
+      $('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');
+    }
+  </script>
+</body>
