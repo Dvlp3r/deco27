@@ -5,12 +5,12 @@ var touch = false;
 
 jQuery(document).ready(function($) {
 	$('#search input[name=\'search\']').parent().find('button').on('click', function() {
-		url = $('base').attr('href') + 'index.php?route=product/search';
+		url = '/products/results';
 
 		var value = $('#search input[name=\'search\']').val();
 
 		if (value) {
-			url += '&search=' + encodeURIComponent(value);
+			url += '?search=' + encodeURIComponent(value);
 		}
 
 		location = url;

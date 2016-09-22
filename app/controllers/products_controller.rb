@@ -7,6 +7,10 @@ class ProductsController < ApplicationController
     @enquiry = Enquiry.new
   end
 
+  def results
+    @products = Product.search_by_name(params[:search]).page params[:page]
+  end
+
   private
   def set_category
     @category = Category.friendly.find(params[:category_id])
