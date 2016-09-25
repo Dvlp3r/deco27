@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
   extend FriendlyId
+  include PgSearch
+
   has_many :product_categories
   has_many :categories, through: :product_categories
   belongs_to :gallery_image
@@ -12,6 +14,7 @@ class Product < ActiveRecord::Base
   validates_presence_of :name
 
   paginates_per 8
+  pg_search_scope :search_by_name, against: :name
 
   def should_generate_new_friendly_id?
     slug.blank?
