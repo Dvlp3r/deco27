@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_category, only: [:show]
+  before_action :set_category, only: [:show, :index]
 
   def show
     @product = @category.products.friendly.find(params[:id])
@@ -9,6 +9,11 @@ class ProductsController < ApplicationController
 
   def results
     @products = Product.search_by_name(params[:search]).page params[:page]
+  end
+
+  def index
+    @parent_category = Category.roots.friendly.find(@category.root.slug)
+    @products = Product.of_children_categories(@category.descendant_ids << @category.id).order("#{params[:sort]} #{params[:order]}").page params[:page]
   end
 
   private
