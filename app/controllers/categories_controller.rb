@@ -12,7 +12,8 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
     @parent_category = Category.roots.friendly.find(@category.root.slug)
-    @products = Product.of_children_categories(@category.descendant_ids << @category.id).order("#{params[:sort]} #{params[:order]}").page params[:page]
+    # @products = Product.of_children_categories(@category.descendant_ids << @category.id).order("#{params[:sort]} #{params[:order]}").page params[:page]
+    @products = @category.products.page params[:page]
   end
 
   # GET /categories/new

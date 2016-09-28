@@ -1,0 +1,126 @@
+.container
+  .row
+    br/
+    column#column-left.col-sm-3.hidden-xs
+      .box.bt-category.not-animated data-animate="fadeInLeft" data-delay="200" 
+        .box-heading
+          h1 Categories
+        .box-content
+          #boss-category.box-category
+            ul.box-category
+              - @parent_category.children.each do |cat|
+                li.child.active
+                  - href = category_products_path(cat)
+                  a.list-group-item.active href="#{href}" = cat.name
+    #content.col-sm-9
+      .bt-block-category.fadeInDown.animated data-animate="fadeInDown" data-delay="200" 
+        a href="#" 
+          img alt="banner" src= @category.picture.url(:large)
+        .block-title
+          h1 = @category.name
+      - if @category.has_children? && !@category.root?
+        .category-list.not-animated data-animate="fadeInRight" data-delay="300" 
+          h4 Refine Search
+          ul
+            - @category.children.each do |child|
+              li
+                a href="#{category_products_path(child)}" = child.name
+      .product-filter
+        .display.hidden-xs
+          button#list-view.btn-list data-toggle="tooltip" title="List" type="button" 
+            i.fa.fa-th-list
+          button#grid-view.btn-grid data-toggle="tooltip" title="Grid" type="button" 
+            i.fa.fa-th-large
+        .limit-sort.hidden-xs
+          .box_sort
+            label.control-label for="input-sort"  Sort By:
+            label
+              select#input-sort.form-control onchange=("location = this.value;") 
+                option selected="selected" value="sort=p.sort_order&amp;order=ASC"  Default
+                option value="?sort=name&order=ASC"  Name (A - Z)
+                option value="?sort=name&order=DESC"  Name (Z - A)
+          .box_limit
+            label.control-label for="input-limit"  Show:
+            label
+              select#input-limit.form-control onchange=("location = this.value;") 
+                option selected="selected" value=("limit=15 ")  15
+                option value=("limit=25 ")  25
+                option value=("limit=50 ")  50
+                option value=("limit=75 ")  75
+                option value=("limit=100 ")  100
+      .row
+        = render partial: 'products/product_card', :collection => @products, :as => :product
+      = paginate @products
+    #tags-load
+      i.fa.fa-spinner.fa-pulse.fa-2x
+
+
+
+script src="#{ request.base_url }/javascripts/jquery-2.1.1.min.js"
+script src="#{ request.base_url }/javascripts/bootstrap.min.js"
+script src="#{ request.base_url }/javascripts/getwidthbrowser.js"
+script src="#{ request.base_url }/javascripts/cs.bossthemes.js"
+script src="#{ request.base_url }/javascripts/jquery.jgrowl.js"
+script src="#{ request.base_url }/javascripts/jquery.appear.js"
+script src="#{ request.base_url }/javascripts/video.js"
+script src="#{ request.base_url }/javascripts/jquery.smoothscroll.js"
+script src="#{ request.base_url }/javascripts/carouFredSel-6.2.1.js"
+script src="#{ request.base_url }/javascripts/plugins.js"
+script src="#{ request.base_url }/javascripts/jquery.tools.min.js"
+script src="#{ request.base_url }/javascripts/jquery.revolution.min.js"
+script src="#{ request.base_url }/javascripts/cloud-zoom.1.0.3.js"
+script src="#{ request.base_url }/javascripts/custom.js"
+javascript:
+    jQuery(document).ready(function() {
+        dataAnimate();
+
+        /* View Mode */
+        // Product List
+        $('#list-view').on('click',function() {
+            $('#content .product-layout').attr('class', 'product-layout product-list col-xs-12');
+            localStorage.setItem('display', 'list');
+        });
+        // Product Grid
+        $('#grid-view').on('click',function() {
+            // What a shame bootstrap does not take into account dynamically loaded columns
+            cols = $('#column-right, #column-left').length;
+            if (cols == 2) {
+                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-6 col-md-6 col-sm-6 col-xs-12');
+            } else if (cols == 1) {
+                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-3 col-md-3 col-sm-4 col-xs-12');
+            } else {
+                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-3 col-md-3 col-sm-3 col-xs-12');
+            }
+            localStorage.setItem('display', 'grid');
+        });
+        if (localStorage.getItem('display') == 'list') {
+            $('#list-view').trigger('click');
+        } else {
+            $('#grid-view').trigger('click');
+        }
+    });
+    /* Modal Quick Shop */
+    $('#myModal').on('shown.bs.modal', function (e) {
+        $.fn.CloudZoom.defaults = {
+            adjustX: 0,
+            adjustY: 0,
+            tint: '#FFF',
+            tintOpacity: 0.5,
+            softFocus: 0,
+            lensOpacity: 0.7,
+            zoomWidth: '450',
+            zoomHeight: '552',
+            position: 'inside',
+            showTitle: 0,
+            titleOpacity: 0.5,
+            smoothMove: '3'
+        };
+        $('.cloud-zoom, .cloud-zoom-gallery').CloudZoom();
+    })
+    /* Quick Shop */
+    function boss_quick_shop(){
+        $('.product-thumb').each(function(index, value){
+            var _qsHref = '<button class=\"btn-quickshop\" title =\"Quick Shop\" class=\"sft_quickshop_icon \" data-toggle=\"modal\" data-target=\"#myModal\"><i class="fa fa-eye"></i></button>';
+            $('.button-group', this).append(_qsHref);
+        });
+    }

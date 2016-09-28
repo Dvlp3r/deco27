@@ -8,8 +8,10 @@
                             <div class="bosszoomtoolbox boss-additional">
                                 <div itemprop="image" class="image">
                                 		<% first_photo = @product.product_images.first %>
+                                    <% if first_photo %>    
                                     <a href=" <%= first_photo.image.url(:large) %>" title="<%= first_photo.name.present? ? first_photo.name : '' %>" class="cloud-zoom" id='zoom1' rel=""><img src="<%= first_photo.image.url(:medium) %>" title="<%= first_photo.name.present? ? first_photo.name : '' %>" alt="<%= first_photo.name.present? ? first_photo.name : '' %>" id="image" />
                                     </a>
+                                    <% end %>
                                 </div>
                                 <div class="image-additional">
                                     <ul class="thumbnails" id="boss-image-additional">
