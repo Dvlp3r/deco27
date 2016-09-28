@@ -15,7 +15,7 @@
     #content.col-sm-9
       .bt-block-category.fadeInDown.animated data-animate="fadeInDown" data-delay="200" 
         a href="#" 
-          img alt="banner" src= @category.picture.url(:large)
+          img alt="banner" src= @category.root.picture.url(:large)
         .block-title
           h1 = @category.name
       - if @category.has_children? && !@category.root?
