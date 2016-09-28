@@ -10,7 +10,7 @@
             ul.box-category
               - @parent_category.children.each do |cat|
                 li.child.active
-                  - href = category_path(cat)
+                  - href = category_products_path(cat)
                   a.list-group-item.active href="#{href}" = cat.name
     #content.col-sm-9
       .bt-block-category.fadeInDown.animated data-animate="fadeInDown" data-delay="200" 
@@ -24,7 +24,7 @@
           ul
             - @category.children.each do |child|
               li
-                a href="#{category_path(child)}" = child.name
+                a href="#{category_products_path(child)}" = child.name
       .product-filter
         .display.hidden-xs
           button#list-view.btn-list data-toggle="tooltip" title="List" type="button" 

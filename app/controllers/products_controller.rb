@@ -19,6 +19,6 @@ class ProductsController < ApplicationController
 
   private
   def set_category
-    @category = Category.friendly.find(params[:category_id])
+    @category = Category.includes(:products).friendly.find(params[:category_id])
   end
 end
