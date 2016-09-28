@@ -93,8 +93,10 @@
           #logo
             a href= root_path
               img.img-responsive alt="Deco27" src="#{ request.base_url }/images/decoLOGO.svg" title= "Deco27"
-        .input-group
-          .search-form
+        #bt-search.input-group
+          a.icon_search
+            i.fa.fa-search
+          .search-form.hidden
             #search.input-group
               input.form-control.input-lg name="search" placeholder="Search" type="text" value="" /
               span.input-group-btn

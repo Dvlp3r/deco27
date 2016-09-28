@@ -534,18 +534,16 @@ header{
 	position:absolute;
 	top:80%;
 	right:0;
-	visibility:hidden;
-	opacity:0;
 	transition: top 0.5s ease 0s;
 	-webkit-transition:top 0.5s ease 0s;
 	-moz-transition:top 0.5s ease 0s;
 	z-index:22;
 }
-#bt-search:hover .search-form{
+/*#bt-search:hover .search-form{
 	top:100%;
 	opacity:1;
 	visibility:visible;
-}
+}*/
 #bt-search .icon_search .fa{
 	font-size:16px;
 	line-height:18px;
