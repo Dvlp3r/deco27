@@ -31,4 +31,8 @@ Rails.application.routes.draw do
       get 'results'
     end
   end
+
+  resources :posts, only: [:index, :show]
+
+  # get "/categories/*category_id/products", to: "products#index"0
 end

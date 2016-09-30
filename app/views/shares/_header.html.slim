@@ -69,15 +69,15 @@
                         .menu-column.row-grid-1
                           ul.column.category
                             li.col-grid-1
-                              a href="#{ category_path('porcelains') }"  PORCELAINS
+                              a href="#{ categories_path('porcelains') }"  PORCELAINS
                             li.col-grid-1
-                              a href="#{ category_path('doors') }"  DOORS
+                              a href="#{ categories_path('doors') }"  DOORS
                             li.col-grid-1
-                              a href="#{ category_path('walls') }"  WALLS
+                              a href="#{ categories_path('walls') }"  WALLS
                             li.col-grid-1
-                              a href="#{ category_path('hardwood-floors') }"  HARDWOOD FLOORS
+                              a href="#{ categories_path('hardwood-floors') }"  HARDWOOD FLOORS
                             li.col-grid-1
-                              a href="#{ category_path('bathroom') }"  BATHROOM
+                              a href="#{ categories_path('bathroom') }"  BATHROOM
 
                   li
                     a href="https://blog.deco27.net"
@@ -137,6 +137,8 @@
                     li
                       a href="https://blog.deco27.net"
                         span.menu-title Studio 27
+                    li
+                      = link_to 'Blog', posts_path
                     li
                       a href= contact_path
                         span.menu-title Contact Us
