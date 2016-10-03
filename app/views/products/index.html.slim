@@ -22,7 +22,6 @@
       - if !@category.root? && !@refine_categories.empty?  
         .category-list.not-animated data-animate="fadeInRight" data-delay="300" 
           h4 Refine Search
-          = @refine_categories.map(&:parent_id)
           ul
             - @refine_categories.each do |child|
               li
