@@ -1,7 +1,7 @@
 class Category < ActiveRecord::Base
 	extend FriendlyId
-  has_many :product_categories
-  has_many :products, through: :product_categories, dependent: :destroy
+  has_many :products
+
   friendly_id :name, use: :slugged
   validates_presence_of :name
 
