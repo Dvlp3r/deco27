@@ -5,6 +5,8 @@ class Category < ActiveRecord::Base
   friendly_id :name, use: :slugged
   validates_presence_of :name
 
+  scope :with_products, -> { joins('LEFT OUTER JOIN products ON products.category_id = categories.id').where('products.category_id is not null')}
+  scope :with_children_which_have_products, ->(ids) { where(id: ids) }
   has_ancestry
 
   DEFAULT_URL = '/images/missing-categories.jpg'
@@ -25,7 +27,7 @@ class Category < ActiveRecord::Base
     {:bucket => ENV['s3_bucket'], :access_key_id => ENV['aws_access_key_id'], :secret_access_key => ENV['aws_access_secret']}
   end
 
-    def parent_enum
+  def parent_enum
     Category.where.not(id: id).map { |c| [ c.name, c.id ] }
   end
 end

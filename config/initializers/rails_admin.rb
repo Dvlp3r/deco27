@@ -68,7 +68,7 @@ RailsAdmin.config do |config|
       field :brand
       field :gallery_id
       field :gallery_image
-      field :categories
+      field :category
       field :product_images
     end
   end

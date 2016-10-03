@@ -13,8 +13,8 @@ class ProductsController < ApplicationController
 
   def index
     @parent_category = Category.roots.friendly.find(@category.root.slug)
-    # @products = Product.of_children_categories(@category.descendant_ids << @category.id).order("#{params[:sort]} #{params[:order]}").page params[:page]
-    @products = @category.products.page params[:page]
+    @products = Product.of_children_categories(@category.descendant_ids << @category.id).order("#{params[:sort]} #{params[:order]}").page params[:page]
+    @refine_categories = @category.parent.try(:root?) ? @category.children.with_products : @category.siblings.with_products
   end
 
   private
