@@ -6,4 +6,8 @@ module CategoriesHelper
   def category_product_path(category, product)
   	super.gsub('%2F', '/')
   end
+
+   def category_path(category)
+  	super.gsub('%2F', '/')
+  end
 end
