@@ -51,8 +51,8 @@ RailsAdmin.config do |config|
       field :picture
       field :slug
       field :parent_id, :enum do
-        enum_method do
-          :parent_enum
+        enum do
+          Category.all.map { |c| [ "#{c.ancestors.pluck(:name).join('/')}/#{c.name}", c.id ] }.compact
         end
       end
       field :products
@@ -72,7 +72,7 @@ RailsAdmin.config do |config|
       field :product_images
       field :category_id, :enum do
         enum do
-          Category.all.map { |c| [ "#{c.parent.try(:name)}/#{c.name}", c.id ] unless c.has_children? }.compact
+          Category.all.map { |c| [ "#{c.ancestors.pluck(:name).join('/')}/#{c.name}", c.id ] unless c.has_children? }.compact
         end
       end
     end
