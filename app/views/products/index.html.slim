@@ -9,7 +9,7 @@
           #boss-category.box-category
             ul.box-category
               // TODO refactor
-              - @parent_category.children.with_children_which_have_products(Category.with_products.map(&:parent_id)).each do |cat|
+              - @left_menu_categories.each do |cat|
                 li.child.active
                   - href = category_products_path(cat)
                   a.list-group-item.active href="#{href}" = cat.name

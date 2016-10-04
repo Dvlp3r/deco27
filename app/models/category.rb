@@ -6,7 +6,6 @@ class Category < ActiveRecord::Base
   validates_presence_of :name
 
   scope :with_products, -> { joins('LEFT OUTER JOIN products ON products.category_id = categories.id').where('products.category_id is not null').group('categories.id')}
-  scope :with_children_which_have_products, ->(ids) { where(id: ids) }
   has_ancestry
 
   DEFAULT_URL = '/images/missing-categories.jpg'

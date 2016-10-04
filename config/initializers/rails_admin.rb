@@ -68,8 +68,13 @@ RailsAdmin.config do |config|
       field :brand
       field :gallery_id
       field :gallery_image
-      field :category
+      # field :category
       field :product_images
+      field :category_id, :enum do
+        enum do
+          Category.all.map { |c| [ "#{c.parent.try(:name)}/#{c.name}", c.id ] unless c.has_children? }.compact
+        end
+      end
     end
   end
 end

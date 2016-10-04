@@ -15,6 +15,11 @@ class ProductsController < ApplicationController
     @parent_category = Category.roots.friendly.find(@category.root.slug)
     @products = Product.of_children_categories(@category.descendant_ids << @category.id).order("#{params[:sort]} #{params[:order]}").page params[:page]
     @refine_categories = @category.parent.try(:root?) ? @category.children.with_products : @category.siblings.with_products
+    @left_menu_categories = if @parent_category.children.try(:first).try(:has_children?)
+                              @parent_category.children.where(id: Category.with_products.map(&:parent_id))
+                            else
+                              @parent_category.children.with_products
+                            end
   end
 
   private
