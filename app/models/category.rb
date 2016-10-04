@@ -26,7 +26,14 @@ class Category < ActiveRecord::Base
     {:bucket => ENV['s3_bucket'], :access_key_id => ENV['aws_access_key_id'], :secret_access_key => ENV['aws_access_secret']}
   end
 
-  def parent_enum
-    Category.where.not(id: id).map { |c| [ c.name, c.id ] }
+  # def parent_enum
+  #   Category.where.not(id: id).map { |c| [ c.name, c.id ] }
+  # end
+  def to_param
+    (ancestors.pluck(:slug) << slug).join('/')
+  end
+  
+  def self.find_by_ancestry_slug(slugs)
+    self.friendly.find_by_slug(slugs.split('/').last)
   end
 end

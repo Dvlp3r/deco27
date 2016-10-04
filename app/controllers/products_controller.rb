@@ -23,7 +23,8 @@ class ProductsController < ApplicationController
   end
 
   private
+
   def set_category
-    @category = Category.includes(:products).friendly.find(params[:category_id])
+    @category = Category.includes(:products).find_by_ancestry_slug(params[:category_id])
   end
 end
