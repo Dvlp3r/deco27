@@ -5,4 +5,8 @@ class CreateProductCategory < ActiveRecord::Migration
       t.integer :category_id
     end
   end
+
+  def down
+  	drop_table :product_categories
+  end
 end

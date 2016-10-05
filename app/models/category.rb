@@ -1,10 +1,11 @@
 class Category < ActiveRecord::Base
 	extend FriendlyId
-  has_many :product_categories
-  has_many :products, through: :product_categories, dependent: :destroy
+  has_many :products
+
   friendly_id :name, use: :slugged
   validates_presence_of :name
 
+  scope :with_products, -> { joins('LEFT OUTER JOIN products ON products.category_id = categories.id').where('products.category_id is not null').group('categories.id')}
   has_ancestry
 
   DEFAULT_URL = '/images/missing-categories.jpg'
@@ -25,7 +26,14 @@ class Category < ActiveRecord::Base
     {:bucket => ENV['s3_bucket'], :access_key_id => ENV['aws_access_key_id'], :secret_access_key => ENV['aws_access_secret']}
   end
 
-    def parent_enum
-    Category.where.not(id: id).map { |c| [ c.name, c.id ] }
+  # def parent_enum
+  #   Category.where.not(id: id).map { |c| [ c.name, c.id ] }
+  # end
+  def to_param
+    (ancestors.pluck(:slug) << slug).join('/')
+  end
+  
+  def self.find_by_ancestry_slug(slugs)
+    self.friendly.find_by_slug(slugs.split('/').last)
   end
 end

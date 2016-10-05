@@ -8,7 +8,8 @@
         .box-content
           #boss-category.box-category
             ul.box-category
-              - @parent_category.children.each do |cat|
+              // TODO refactor
+              - @left_menu_categories.each do |cat|
                 li.child.active
                   - href = category_products_path(cat)
                   a.list-group-item.active href="#{href}" = cat.name
@@ -18,11 +19,11 @@
           img alt="banner" src= @category.root.picture.url(:large)
         .block-title
           h1 = @category.name
-      - if @category.has_children? && !@category.root?
+      - if !@category.root? && !@refine_categories.empty?  
         .category-list.not-animated data-animate="fadeInRight" data-delay="300" 
           h4 Refine Search
           ul
-            - @category.children.each do |child|
+            - @refine_categories.each do |child|
               li
                 a href="#{category_products_path(child)}" = child.name
       .product-filter

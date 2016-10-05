@@ -11,9 +11,15 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @parent_category = Category.roots.friendly.find(@category.root.slug)
     # @products = Product.of_children_categories(@category.descendant_ids << @category.id).order("#{params[:sort]} #{params[:order]}").page params[:page]
-    @products = @category.products.page params[:page]
+    @parent_category = Category.roots.friendly.find(@category.root.slug)
+    @products = Product.of_children_categories(@category.descendant_ids << @category.id).order("#{params[:sort]} #{params[:order]}").page params[:page]
+    @refine_categories = @category.parent.try(:root?) ? @category.children.with_products : @category.siblings.with_products
+    @left_menu_categories = if @parent_category.children.try(:first).try(:has_children?)
+                              @parent_category.children.where(id: Category.with_products.map(&:parent_id))
+                            else
+                              @parent_category.children.with_products
+                            end
   end
 
   # GET /categories/new
@@ -68,7 +74,7 @@ class CategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
-      @category = Category.includes(:products).friendly.find(params[:id])
+      @category = Category.includes(:products).find_by_ancestry_slug(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

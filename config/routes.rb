@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'admin/home', as: :admin
   get 'admin' => 'admin#home'
   get 'sitemap.xml', :to => redirect('/sitemap.xml')
-  resources :categories do
+  resources :categories, id: /.+/ do
     #TODO investigate product`t actions
     resources :products
   end
