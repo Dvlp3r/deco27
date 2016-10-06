@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts, only: [:index, :show]
+  resources :posts, path: 'blog', only: [:index, :show]
 
   # get "/categories/*category_id/products", to: "products#index"0
 end
