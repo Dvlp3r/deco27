@@ -111,16 +111,9 @@ ActiveRecord::Schema.define(version: 20161003142343) do
 
   add_index "photos", ["product_id"], name: "index_photos_on_product_id", using: :btree
 
-  create_table "posts", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.string   "slug"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+  create_table "product_categories", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "category_id"
   end
 
   create_table "products", force: :cascade do |t|

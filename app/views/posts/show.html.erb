@@ -1,0 +1,78 @@
+<div class="bt-breadcrumb">
+  <div class="container">
+    <div class="row">
+      <ul class="breadcrumb">
+        <li><a href="/"><i class="fa fa-home"></i></a>
+        </li>
+        <li><%= link_to 'Blog', posts_path %>
+        </li>
+        <li><a href="blog-detail.html"><%= @post.name %></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div><!-- /.bt-breadcrumb -->
+<div class="container">
+  <div class="row">
+    <%= render partial: 'left_column' %>      
+      <div id="content" class="col-sm-9">
+        <div class="boss_article-item boss_article-detail">
+          <div class="content_bg">
+            <div class="article-title"> <img src="<%= @post.image.url(:medium) %>" alt="Braid slipper dress dungaree " title="Braid slipper dress dungaree " />
+              <h1 class="article-title-boss"><%= @post.name %></h1>
+              <div class="date-post"> 
+                <small class="time-stamp time-article"><%= @post.created_at.strftime('%A, %b %d, %Y') %></small> 
+              </div>
+            </div>
+            <div class="article-content">
+              <%= @post.description %>
+            </div>
+            <div class="boss_article-action">
+              <div class="article-share">
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_default_style"><a class="addthis_button_compact">Share</a>
+                  <a class="addthis_button_email"></a>
+                  <a class="addthis_button_print"></a>
+                  <a class="addthis_button_facebook"></a>
+                  <a class="addthis_button_twitter"></a>
+                </div>
+                <script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js"></script>
+                <!-- AddThis Button END -->
+              </div>
+            </div><!-- /.boss_article-action -->
+          </div><!-- /.content_bg -->
+          <div class="article-related">
+            <h1 class="box-title">Related posts</h1>
+            <div class="carousel-button"> 
+              <a id="prev_art_related" class="prev nav_thumb" href="javascript:void(0)" style="display:inline-block;" title="prev"><i class="fa fa-angle-left"></i></a> 
+              <a id="next_art_related" class="next nav_thumb" href="javascript:void(0)" style="display:inline-block;" title="next"><i class="fa fa-angle-right"></i></a> 
+            </div>
+            <div class="list_carousel responsive">
+              <ul id="article_related" class="content-articles">
+                <% Post.all.sample(4).each do |post| %>
+                  <li>
+                    <div class="relt-article">
+                      <div class="image">
+                        <a href="<%= post_path(post) %>"><img src="<%= post.image.url(:medium) %>" alt="<%= post.name %>" title="<%= post.name %>" class="img-responsive" />
+                        </a>
+                      </div>
+                      <div class="caption">
+                        <div class="name"><%= link_to post.name, post_path(post) %>
+                        </div>
+                        <div class="date-comments"> 
+                          <small class="time-stamp"><%= @post.created_at.strftime('%A, %b %d, %Y') %></small> 
+                        </div>
+                        <div class="title">
+                          <p><%= "#{post.description.first(50)}...." %></p>
+                        </div> <%= link_to 'Read more', post_path(post), class: "btn-readmore" %> 
+                      </div>
+                    </div>
+                  </li>
+                <% end %>                
+              </ul>
+            </div>
+          </div><!-- /.article-related -->
+          </div><!-- /.boss_article-item -->
+        </div><!-- /#content -->
+      </div><!-- /.row -->
+</div><!-- /.container -->
