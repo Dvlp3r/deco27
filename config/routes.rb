@@ -26,11 +26,7 @@ Rails.application.routes.draw do
     resources :products
   end
 
-  resources :products, only: [] do
-    collection do
-      get 'results'
-    end
-  end
+  resources :results, only: [:index]
 
   resources :posts, path: 'blog', only: [:index, :show]
 

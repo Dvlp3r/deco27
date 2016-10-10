@@ -1,5 +1,6 @@
 class Category < ActiveRecord::Base
 	extend FriendlyId
+  include PgSearch
   has_many :products
 
   friendly_id :name, use: :slugged
@@ -7,6 +8,9 @@ class Category < ActiveRecord::Base
 
   scope :with_products, -> { joins('LEFT OUTER JOIN products ON products.category_id = categories.id').where('products.category_id is not null').group('categories.id')}
   has_ancestry
+
+  multisearchable :against => :name
+
 
   DEFAULT_URL = '/images/missing-categories.jpg'
   VALIDATE_SIZE = { :in => 0..5.megabytes, :message => 'Photo size too large. Please limit to 5 mb.' }

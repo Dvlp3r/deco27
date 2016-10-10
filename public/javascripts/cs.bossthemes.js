@@ -5,7 +5,7 @@ var touch = false;
 
 jQuery(document).ready(function($) {
 	$('#search input[name=\'search\']').parent().find('button').on('click', function() {
-		url = '/products/results';
+		url = '/results';
 
 		var value = $('#search input[name=\'search\']').val();
 
