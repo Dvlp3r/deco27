@@ -14,7 +14,7 @@ class Product < ActiveRecord::Base
   validates_presence_of :name
 
   paginates_per 8
-  pg_search_scope :search_by_name, against: :name
+  multisearchable :against => [:name, :color]
 
   def should_generate_new_friendly_id?
     slug.blank?

@@ -7,10 +7,6 @@ class ProductsController < ApplicationController
     @enquiry = Enquiry.new
   end
 
-  def results
-    @products = Product.search_by_name(params[:search]).page params[:page]
-  end
-
   def index
     @parent_category = Category.roots.friendly.find(@category.root.slug)
     @products = Product.of_children_categories(@category.descendant_ids << @category.id).order("#{params[:sort]} #{params[:order]}").page params[:page]

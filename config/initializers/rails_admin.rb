@@ -68,7 +68,7 @@ RailsAdmin.config do |config|
       field :brand
       field :gallery_id
       field :gallery_image
-      # field :category
+      field :color
       field :product_images
       field :category_id, :enum do
         enum do
