@@ -1,3 +1,12 @@
+<% set_meta_tags site: "Deco27 | South Floridas Premier Luxury Interior Elements. ",
+                 description: 'Deco27 is South Floridas premier designer, featuring the most sought after brands in Hardwood flooring, Walls, Porcelains, and Doors.',
+                                 og: {
+                                     title: "Deco27 | #{@product.name} ",
+                                     type: 'website',
+                                     url: "#{request.url}",
+                                     description: "#{@product.description}",
+                                     image: "#{@product.product_images.first.try(:image).try(:url)}"
+                                     }%>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
