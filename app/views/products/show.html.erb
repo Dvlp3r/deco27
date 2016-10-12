@@ -60,9 +60,7 @@
                         <div class="description">
                             <h3>INFO</h3>
                             <ul class="list-unstyled">
-                            		<% if @product.brand.present? %>
-                                	<li>- Brand: <a href="#">Apple</a>
-                                <% end %>
+                                <li>- Brand: <a href="#"><%= @product.try(:brand) %></a>
                                 </li>
                                 <li>- Description:<%= @product.description %></b>
                                   <br>
