@@ -1,137 +1,201 @@
-<div class="bt-breadcrumb">
-  <div class="container">
-    <div class="row">
-      <ul class="breadcrumb">
-        <li><a href="/"><i class="fa fa-home"></i></a>
-        </li>
-        <li><%= link_to 'Blog', posts_path %>
-        </li>
-      </ul>
+<% set_meta_tags site: "Deco27 | South Floridas Premier Luxury Interior Elements. ",
+                 description: 'Deco27 is South Floridas leading provider of luxury interior surfaces, featuring the most sought after brands in Hardwood flooring, Walls, Porcelains, and Doors.',
+                 og: {
+                         title: "Deco27 | South Floridas Premier Luxury Interior Elements. ",
+                         type: 'website',
+                         url: 'http://www.deco27.net#',
+                         description: "Deco27 is South Floridas leading provider of luxury interior surfaces, featuring the most sought after brands in Hardwood flooring, Walls, Porcelains, and Doors.",
+                         image: "http://i.imgur.com/ZBgbe7n.png"
+                 }%>
+
+<div>
+  <br>
+  <br>
+</div>
+<div class="fluid-container">
+  <div class="row">
+    <div id="content" class="col-sm-12">
+      <div data-delay="200" data-animate="fadeInDown" class="bt-block-category fadeInDown animated">
+        <a href="#"> <img alt="banner" src="../images/banner/EcoDomo.jpg"></a>
+        <div class="block-title">
+          <h1>Luxury Designs</h1>
+          <h4>with an Eye for Detail</h4>
+          <a style="float:right" href="#">Shop Now</a>
+        </div>
+      </div>
     </div>
   </div>
-</div><!-- /.bt-breadcrumb -->
-<div class="container">
-  <div class="row">
-    <%= render partial: 'left_column' %>
-      <div id="content" class="col-sm-9">
-        <h1>Blog</h1>
-        <div class="article-filter">
+  <!-- /.bt-block-category -->
+
+  <div class="container-fluid">
+    <div class="row">
+      <div id="content" >
+
+
+        <div class="product-filter">
           <div class="display hidden-xs">
             <button type="button" id="list-view" class="btn-list" data-toggle="tooltip" title="List"><i class="fa fa-th-list"></i>
             </button>
             <button type="button" id="grid-view" class="btn-grid" data-toggle="tooltip" title="Grid"><i class="fa fa-th-large"></i>
             </button>
-          </div>
-          <div class="limit-sort hidden-xs">
-            <div class="box_sort">
-              <label class="control-label" for="input-sort">Sort By:</label>
-              <label>
-                <select id="input-sort" class="form-control">
-                  <option value="blog.html&amp;sort=ba.sort_order&amp;order=ASC" selected="selected">Default</option>
-                  <option value="sort=bad.name&amp;order=ASC">Name (A - Z)</option>
-                  <option value="sort=bad.name&amp;order=DESC">Name (Z - A)</option>
-                  <option value="sort=ba.date_added&amp;order=ASC">Date Added (Old &gt; New)</option>
-                  <option value="sort=ba.date_added&amp;order=DESC">Date Added (New &gt; Old)</option>
-                  <option value="sort=comment&amp;order=DESC">Comment (Highest)</option>
-                  <option value="sort=comment&amp;order=ASC">Comment (Lowest)</option>
-                </select>
-              </label>
-            </div>
-            <div class="box_limit">
-              <label class="control-label" for="input-limit">Show:</label>
-              <label>
-                <select id="input-limit" class="form-control">
-                  <option value="limit=5" selected="selected">5</option>
-                  <option value="limit=10">10</option>
-                  <option value="limit=15">15</option>
-                  <option value="limit=20">20</option>
-                  <option value="limit=30">30</option>
-                </select>
-              </label>
-            </div>
-          </div>
-        </div><!-- /.article-filter -->
+          </div><!-- /.display -->
+        </div><!-- /.product-filter -->
+
         <div class="row">
-          <% @posts.each do |post| %>
-            <div class="article-layout article-list col-xs-12">
-            <div class="content-bg">
-              <div class="article-image">
-                <a href="<%= post_path(post) %>"><img src="<%= post.image.url(:medium) %>" alt=<%= "#{post.name}" %> title=<%= "#{post.name}" %> class="img-responsive" />
-                </a>
-              </div>
-              <div class="article_dt">
-                <div class="article-name">
-                  <h2><%= link_to post.name, post_path(post) %></h2> 
+          <% @photos.each do |image| %>
+              <div class="product-layout product-list">
+                <div class="product-thumb">
+                  <div class="image">
+                    <%= link_to image_tag(image.image.url(:large), :class => "img-responsive"), "#", data: {toggle: "modal", target: "##{image.product.blank? ? "_" : image.product.first.id}Modal", href: "##{image.product.first.id}Modal"} %>
+                    <div class="button-group button-grid">
+
+                    </div>
+                  </div>
+                  <div class="caption">
+                    <div class="name"><a href="product-detail.html"><%= image.name %></a>
+                    </div>
+                    <div class="description">
+                      <p><%= image.product.blank? ? '' : image.product.first.description %></p>
+                    </div>
+                  </div>
+                  <div class="button-group button-list">
+
+                  </div>
                 </div>
-                  <div class="time-stamp"><%= post.created_at.strftime('%A, %b %d, %Y') %> </div>
-                  <div class="article-title">
-                    <p><%= post.description %></p>
-                  </div> 
-                  <%= link_to 'Read more', post_path(post), class: "btn-readmore" %>
+              </div><!-- /.product-layout -->
+          <% end %>
+        </div><!-- /.row -->
+      </div><!-- /#content -->
+      <div id="tags-load"><i class="fa fa-spinner fa-pulse fa-2x"></i>
+      </div>
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</div>
+
+
+
+
+<div id="back_top" class="back_top" title="Back To Top"><span><i class="fa fa-angle-up"></i></span></div>
+
+<% @photos.each do |image| %>
+    <div id="<%=image.product.first.id%>Modal" class="modal fade" role="dialog" >
+      <div style="width: 95%; max-width: 900px;" class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" title="Close" data-dismiss="modal" aria-hidden="true">×</button>
+          </div>
+          <div class="modal-body">
+            <div id="modal-content">
+              <div class="product-info-qs product-info">
+                <div class="row">
+                  <div class="col-md-6 col-xs-12">
+                    <div class="bt-product-zoom">
+                      <div class="image">
+                        <%= image_tag(image.image.url(:large), :class => "img-responsive") %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-xs-12">
+                    <div class="product-name">
+                      <h1><%= image.name %></h1>
+                    </div>
+                    <div class="description">Product Description</div>
+                    <div class="button-group">
+                      <%=button_to "View #{image.product.first.name}", category_product_path(image.product.first.category, image.product.first), method: :get %>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <div class="image-additional">
+                      <ul id="boss_image_additional">
+                        <% image.product.first.product_images.each do |product_image| %>
+                            <li>
+                              <a href="<%= product_image.image.url(:thumb)%>" title="<%= product_image.name %>" class="cloud-zoom-gallery"><img src="<%= product_image.image.url(:thumb)%>" title="<%= product_image.name %>" alt="<%= product_image.name %>">
+                              </a>
+                            </li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          <% end %>
-       </div><!-- /.row -->
-       <div class="result-pagination blog-pagination">
-         <div class="results pull-left">Showing 1 to 5 of 7 (2 Pages)</div>
-         <div class="links">
-           <ul class="pagination">
-             <li class="active"><span>1</span>
-             </li>
-             <li><a href="#page=2">2</a>
-             </li>
-             <li><a href="#page=2">&gt;</a>
-             </li>
-             <li><a href="#page=2">&gt;|</a>
-             </li>
-           </ul>
-         </div>
-       </div><!-- /.result-pagination -->
-     </div><!-- /#content -->
-   </div><!-- /.row -->
- </div><!-- /.container -->
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
 
 
-<script src="/javascripts/jquery-2.1.1.min.js"></script>
-<script src="/javascripts/bootstrap.min.js"></script>
-<script src="/javascripts/getwidthbrowser.js"></script>
-<script src="/javascripts/cs.bossthemes.js"></script>
-<script src="/javascripts/jquery.jgrowl.js"></script>
-<script src="/javascripts/jquery.appear.js"></script>
-<script src="/javascripts/video.js"></script>
-<script src="/javascripts/jquery.smoothscroll.js"></script>
-<script src="/javascripts/carouFredSel-6.2.1.js"></script>
-<script src="/javascripts/plugins.js"></script>
-<script src="/javascripts/jquery.tools.min.js"></script>
-<script src="/javascripts/jquery.revolution.min.js"></script>
-<script src="/javascripts/cloud-zoom.1.0.3.js"></script>
-<script src="/javascripts/custom.js"></script>
+<script src="../javascripts/jquery-2.1.1.min.js"></script>
+<script src="../javascripts/bootstrap.min.js"></script>
+<script src="../javascripts/getwidthbrowser.js"></script>
+<script src="../javascripts/cs.bossthemes.js"></script>
+<script src="../javascripts/jquery.jgrowl.js"></script>
+<script src="../javascripts/jquery.appear.js"></script>
+<script src="../javascripts/video.js"></script>
+<script src="../javascripts/jquery.smoothscroll.js"></script>
+<script src="../javascripts/carouFredSel-6.2.1.js"></script>
+<script src="../javascripts/isotope.pkgd.js"></script>
+<script src="../javascripts/plugins.js"></script>
+<script src="../javascripts/jquery.tools.min.js"></script>
+<script src="../javascripts/jquery.revolution.min.js"></script>
+<script src="../javascripts/cloud-zoom.1.0.3.js"></script>
+<script src="../javascripts/custom.js"></script>
 <script>
-                        jQuery(document).ready(function() {
-                          /* View Mode */
-        // Article List
+    jQuery(document).ready(function() {
+
+        boss_quick_shop();
+        dataAnimate();
+
+        /* View Mode */
+        // Product List
         $('#list-view').on('click',function() {
-          $('#content .article-layout').attr('class', 'article-layout article-list col-xs-12');
-          localStorage.setItem('display', 'list');
+            $('#content .product-layout').attr('class', 'product-layout product-list col-xs-12');
+            localStorage.setItem('display', 'list');
         });
-        // Article Grid
+        // Product Grid
         $('#grid-view').on('click',function() {
             // What a shame bootstrap does not take into account dynamically loaded columns
             cols = $('#column-right, #column-left').length;
             if (cols == 2) {
-              $('#content .article-layout').attr('class', 'article-layout article-grid col-md-6 col-xs-12');
+                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-3 col-md-3 col-sm-3 col-xs-12');
             } else if (cols == 1) {
-              $('#content .article-layout').attr('class', 'article-layout article-grid col-md-4 col-sm-6 col-xs-12');
+                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-3 col-md-3 col-sm-3 col-xs-12');
             } else {
-              $('#content .article-layout').attr('class', 'article-layout article-grid col-md-3 col-sm-4 col-xs-12');
+                $('#content .product-layout').attr('class', 'product-layout product-grid col-lg-3 col-md-3 col-sm-3 col-xs-12');
             }
             localStorage.setItem('display', 'grid');
-          });
+        });
         if (localStorage.getItem('display') == 'list') {
-          $('#list-view').trigger('click');
+            $('#list-view').trigger('click');
         } else {
-          $('#grid-view').trigger('click');
+            $('#grid-view').trigger('click');
         }
-      });
-    </script>
+    });
+    /* Modal Quick Shop */
+    $('#myModal').on('shown.bs.modal', function (e) {
+        $.fn.CloudZoom.defaults = {
+            adjustX: 0,
+            adjustY: 0,
+            tint: '#FFF',
+            tintOpacity: 0.5,
+            softFocus: 0,
+            lensOpacity: 0.7,
+            zoomWidth: '450',
+            zoomHeight: '552',
+            position: 'inside',
+            showTitle: 0,
+            titleOpacity: 0.5,
+            smoothMove: '3'
+        };
+        $('.cloud-zoom, .cloud-zoom-gallery').CloudZoom();
+    })
+    /* Quick Shop */
+    function boss_quick_shop(){
+        $('.product-thumb').each(function(index, value){
+            var _qsHref = '<button class=\"btn-quickshop\" title =\"Product View\" class=\"sft_quickshop_icon \" data-toggle=\"modal\" data-target=\"#myModal\"><i class="fa fa-eye"></i></button>';
+            $('.button-group', this).append(_qsHref);
+        });
+    }
+</script>
+
