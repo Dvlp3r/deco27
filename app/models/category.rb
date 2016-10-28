@@ -22,6 +22,19 @@ class Category < ActiveRecord::Base
                         :size => VALIDATE_SIZE
 
 
+  def self.category_list
+    category_order_array = ['Hardwood Floors','Doors','Porcelains','Bathroom','Walls']
+    category_reorder_hash = {}
+
+    category_order_array.each do |root|
+      roo = roots.find_by_name(root)
+      category_reorder_hash[roo.name] = roo.slug
+    end
+
+    return category_reorder_hash
+
+  end
+
 	def should_generate_new_friendly_id?
     slug.blank?
   end

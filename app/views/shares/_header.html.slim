@@ -130,9 +130,9 @@
                         .menu-row.row-col-1
                           .menu-column.row-grid-1
                             ul.column.category
-                              - Category.roots.each do |root|
+                              - Category.category_list.each do |key, value|
                                 li.col-grid-1
-                                  a href="#{ category_products_path(root.slug) }"  = root.name.upcase
+                                  a href="#{ category_products_path(value) }" = key.upcase
 
                     li
                       a href="https://blog.deco27.net"
