@@ -46,17 +46,7 @@
                     </div>
                     <div class="col-sm-7 col-sm-offset-1">
                         <h2><%= @product.name %></h2>
-                        <div class="fb-share-button" 
-                            data-href="<%= request.env['REQUEST_URI'] %>" 
-                            data-layout="button_count">
-                        </div>
-                        <a class="twitter-share-button"
-                          href="https://twitter.com/intent/tweet?url=<%= request.env['REQUEST_URI'].gsub(":", "%3A").gsub("/", "%2F") %>&amp;original_referer==<%= CGI.escape(request.env['REQUEST_URI']) %>"
-                          data-size="large">
-                        Tweet</a>
 
-                        <a href="https://twitter.com/intent/tweet?hashtags=demo&amp;original_referer=https%3A%2F%2Fdev.twitter.com%2Fweb%2Ftweet-button&amp;ref_src=twsrc%5Etfw&amp;related=twitterapi%2Ctwitter&amp;text=Hello%20world&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fexample.com%2Ffoo&amp;via=twitterdev" class="btn" id="b"><i></i><span class="label" id="l">Demo Tweet</span></a>
-                        <br>
                         <div class="description">
                             <h3>INFO</h3>
                             <ul class="list-unstyled">
@@ -68,6 +58,19 @@
                                 </li>
                             </ul>
                         </div>
+                      <div class="fb-share-button"
+                           data-href="<%= request.env['REQUEST_URI'] %>"
+                           data-layout="button_count">
+                      </div>
+                      <br>
+                      <br>
+                      <a class="twitter-share-button"
+                         href="https://twitter.com/intent/tweet?url=<%= request.env['REQUEST_URI'].gsub(":", "%3A").gsub("/", "%2F") %>&amp;original_referer==<%= CGI.escape(request.env['REQUEST_URI']) %>"
+                         data-size="large">
+                        Tweet</a>
+
+                      <a href="https://twitter.com/intent/tweet?hashtags=demo&amp;original_referer=https%3A%2F%2Fdev.twitter.com%2Fweb%2Ftweet-button&amp;ref_src=twsrc%5Etfw&amp;related=twitterapi%2Ctwitter&amp;text=Hello%20world&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fexample.com%2Ffoo&amp;via=twitterdev" class="btn" id="b"><i></i><span class="label" id="l">Demo Tweet</span></a>
+                      <br>
                     </div>
                 </div>
             </div><!-- /.product-info -->
