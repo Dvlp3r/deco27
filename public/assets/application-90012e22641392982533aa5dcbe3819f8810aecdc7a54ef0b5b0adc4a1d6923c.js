@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".icon_search").on("click",function(){$(".search-form").toggleClass("hidden")})}),$(window).load(function(){$(".se-pre-con").fadeOut("slow")});
