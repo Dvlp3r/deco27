@@ -87,6 +87,7 @@ categories["Hardwood Floors"] = ["The Atelier Collection", "The Chateau Collecti
                                 ]                              
 
 categories["Recycled Leather Floors"] = []
+categories["Decking"] = []
 
 categories.each do |k, v|
   parent = Category.roots.where(name: k).first_or_create
