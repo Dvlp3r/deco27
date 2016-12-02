@@ -86,7 +86,6 @@ categories["Hardwood Floors"] = ["The Atelier Collection", "The Chateau Collecti
                                  "The Italian Collection" => ["Contermporary/Modern", "Casual/Country/Tropical", "Eclectic", "Commercial"]
                                 ]                              
 
-categories["Recycled Leather Floors"] = []
 categories["Decking"] = []
 
 categories.each do |k, v|

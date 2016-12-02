@@ -23,7 +23,7 @@
                   <% if category.picture.present? %>
                     <% picture_url = category.picture.url(:medium) %>
                   <% else %>
-                    <% picture_url = "#{ request.base_url }/images/missing-categories-thumb.jpg" %>
+                    <% picture_url = "https://dummyimage.com/270x270/cbd1d6/fff.png&text=#{category.name}" %>
                   <% end %>
                   <%=link_to( image_tag( picture_url, class: "img-responsive img-margin" ), category_path(category)) %>
                   <h4><%= link_to category.name, category_path(category) %></h4>
