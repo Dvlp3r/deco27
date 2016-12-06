@@ -23,7 +23,7 @@ class Category < ActiveRecord::Base
 
 
   def self.category_list
-    category_order_array = ['Hardwood Floors','Doors','Porcelains','Bathroom','Walls']
+    category_order_array = ['Hardwood Floors','Doors','Porcelains','Bathroom','Walls', 'Decking']
     category_reorder_hash = {}
 
     category_order_array.each do |root|
